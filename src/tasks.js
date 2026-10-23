@@ -5,7 +5,7 @@ const tasks = [];
 export function addTask(title) {
     // empty title check
     if(!title || title.trim() === '') {
-        return { error: 'Title cannot be empty' };
+        throw new Error('Title cannot be empty');
     }
     // Create task
     const task = {
@@ -29,6 +29,16 @@ export function completeTask(id) {
     if(task) {
        return task.completed = true;
     }
-    return { error: 'Task not found' };
+    throw new Error('Task not found');
 
+}
+
+export function deleteTask(id) {
+    const index = tasks.findIndex(task => task.id === id);
+    const task = tasks[index];
+    if(index !== -1) {
+        tasks.splice(index,1);
+        return { task, message: 'Task deleted successfully' };
+    }
+    throw new Error('Task not found');
 }
