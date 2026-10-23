@@ -34,6 +34,6 @@ test('deleteTask should throw an error if the task does not exist', () => {
     assert.throws(() => deleteTask(999), /Task not found/);
 })
 
-// test('completeTask should throw an error if the task does not exist', () => {
-//     assert.throws(() => completeTask(999), /Task not found/);
-// })
+test('completeTask should throw an error if the task does not exist', () => {
+    assert.throws(() => completeTask(999), /Task not found/);
+})
